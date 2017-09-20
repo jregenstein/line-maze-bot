@@ -10,6 +10,9 @@
 //motor1 is right motor, motor 2 is left motor. I'd like to change this but it works as is and I don't want to introduce bugs
 MeDCMotor motor1(M1);
 MeDCMotor motor2(M2);
+MeBuzzer buzzer;
+
+#define NOTE_A4 440
 
 uint8_t motorSpeed = 100;
 
@@ -206,13 +209,16 @@ void uTurn(){
 
 //behavior when reach goal
 void celebrate(){
+    buzzer.tone(NOTE_A4,beeptime);
+    delay(100);
+    buzzer.noTone();
   //We don't want this loop to end, otherwise the loop function will call lineFollow() again
   while(true){
     turn(90);
     turn(-90);
-    turn(45);
-    turn(45);
-    turn(-90);
+    turn(-45);
+    turn(-45);
+    turn(90);
   }
 }
 
