@@ -1,10 +1,12 @@
 # line-maze-bot
 Basic logic:
+
 For solving the maze, our mBot is programmed to first follow a straight line and make slight adjustments unless both of the middle two sensors are reading the black line. When the side sensors detect the line, we determine that we have reached an intersection and call the evaluateIntersection() method. This method determines whether we should turn left, turn right, go straight or celebrate because we’ve reached the goal. It does this by first checking the leftmost sensor to see if a left turn is available, checking the rightmost sensor to see if a right turn is available, and then moving forward and checking the middle sensors to see if a straight line is available. Since we use the left-hand rule, we prioritize turning left. If turning left isn’t an option, the mBot will prioritize going forwards and if there are no other options it will turn right. If it reaches a dead end, the bot will move forward a bit and then make a u-turn. We determine that the mBot has reached the goal if we move forward and the leftmost and rightmost sensors still detect the line.
 
 With regards to turns, to make sure the robot ends up on the line, we manually turn roughly 80 degrees and then have the mBot keep turning until it detects the line with its middle sensors. The 80 degrees is a roughly calibrated number that helps us avoid the situation where the mBot falsely assumes it has completed its turn when it discovers another line while turning. 
 
 How we solved the loops:
+
 Since we do not have enough time, we did not actually implement an advanced algorithm. They way we solved it is by setting up a counter which counts the number of left turns it made. Here is how the counter works:
 Left turn: +1
 Right turn: -1
