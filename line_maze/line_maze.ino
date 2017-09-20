@@ -142,12 +142,13 @@ void evaluateIntersection(){
   boolean backleft = !sensor1();
   boolean backright = !sensor4();
   //move forward so we can either turn onto lines or detect if we're at the goal.
-  move(8);
+  move(2);
   boolean frontleft = !sensor1();
   boolean frontright = !sensor4();
   //check if we've reached the goal
   if(frontleft && frontright) celebrate();
   //if we can turn left, turn left
+  move(6);
   if(backleft){
     left();
     lineFollow();
