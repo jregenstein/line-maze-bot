@@ -193,6 +193,7 @@ void right(){
 
 //turns around, stops on line. Called within lineFollow
 void uTurn(){
+  move(8);
   turn(45);
   setAngularVel(angularSpeed);
   while(sensor2() || sensor3()){
