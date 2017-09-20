@@ -145,13 +145,13 @@ void evaluateIntersection(){
   boolean backleft = !sensor1();
   boolean backright = !sensor4();
   //move forward so we can either turn onto lines or detect if we're at the goal.
-  move(2);
+  move(4);
   boolean frontleft = !sensor1();
   boolean frontright = !sensor4();
   //check if we've reached the goal
   if(frontleft && frontright) celebrate();
   //if we can turn left, turn left
-  move(6);
+  move(4);
   if(backleft){
     left();
     lineFollow();
@@ -196,7 +196,7 @@ void right(){
 
 //turns around, stops on line. Called within lineFollow
 void uTurn(){
-  move(8);
+  move(14);
   turn(160);
   setAngularVel(angularSpeed);
   while(sensor2() || sensor3()){
@@ -209,16 +209,17 @@ void uTurn(){
 
 //behavior when reach goal
 void celebrate(){
-    buzzer.tone(NOTE_A4,beeptime);
-    delay(100);
-    buzzer.noTone();
+    for (int n=0; n<6; n++){
+      buzzer.tone(NOTE_A4,300);
+      delay(100);
+      buzzer.noTone();
+    }
   //We don't want this loop to end, otherwise the loop function will call lineFollow() again
   while(true){
-    turn(90);
-    turn(-90);
+    turn(45);
     turn(-45);
     turn(-45);
-    turn(90);
+    turn(45);
   }
 }
 
