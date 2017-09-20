@@ -171,7 +171,7 @@ void evaluateIntersection(){
 //turns to the left, then calls lineFollow
 void left(){
   //get off the line
-  turn(45);
+  turn(80);
   setAngularVel(angularSpeed);
   //turn until we see the next line
   while(sensor2() || sensor3()){
@@ -184,7 +184,7 @@ void left(){
 //turns to the right, then calls lineFollow
 void right(){
   //get off the line
-  turn(-45);
+  turn(-80);
   setAngularVel(-angularSpeed);
   //turn until we see the next line
   while(sensor2() || sensor3()){
@@ -197,7 +197,7 @@ void right(){
 //turns around, stops on line. Called within lineFollow
 void uTurn(){
   move(8);
-  turn(45);
+  turn(160);
   setAngularVel(angularSpeed);
   while(sensor2() || sensor3()){
     //delay(10);
